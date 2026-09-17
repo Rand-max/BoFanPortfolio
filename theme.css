@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{color-scheme:light;--site-font:"Space Grotesk","Noto Serif TC","Microsoft JhengHei",sans-serif}
+body,body *{font-family:var(--site-font)!important}
+/* Phone layouts: separate hero rows and a single-column work viewer. */
+@media(max-width:700px){
+ body .hero{display:grid;grid-template-rows:110px minmax(0,1fr) 56px;justify-items:center;align-items:stretch;padding:18px 20px 0}
+ body .hero .hero-copy{position:relative;grid-row:1;top:auto;right:auto;align-self:center;justify-self:center;margin:0;max-width:100%;font-size:12px}
+ body .hero .portrait-real{position:relative;grid-row:2;left:auto;bottom:auto;translate:none;width:100%;height:100%;max-width:85vw;min-height:0;object-fit:contain;align-self:stretch}
+ body .hero .scroll{position:relative;grid-row:3;bottom:auto;align-self:center}
+ body .work-grid:not(.single){grid-template-columns:minmax(0,1fr);gap:20px}
+ body .work-view.is-single{grid-template-columns:minmax(0,1fr);padding:0;gap:0}
+ body .is-single .side-preview{display:none}
+ body .is-single .work-grid.single{grid-column:1;grid-row:1}
+ body .is-single .single-controls{grid-column:1;grid-row:2}
+ body .about-hero .about-photo{display:none}
+ body .about-hero{min-height:0;padding:48px 25px}
+ body .about-hero .copy{width:100%}
+ body .about-title-enter{animation-delay:0s}
+ body .about-content-enter{animation-delay:.8s}
+}
+/* Showreel and sticky navigation share one viewport. */
+.showreel{--nav-height:95px;height:calc(100svh - var(--nav-height));padding:18px 4.7% 24px;display:flex;flex-direction:column;align-items:center;gap:20px;scroll-margin-top:var(--nav-height)}
+.showreel .section-title{align-self:stretch;flex:none;line-height:1.4;margin:0}
+.showreel .youtube{flex:none;width:min(100%,calc((100svh - 213px) * 16 / 9));height:auto;aspect-ratio:16/9;margin:auto 0}
+@media(max-width:700px){
+ body .showreel{--nav-height:67px;height:auto;display:block;padding:16px 20px 40px}
+ .showreel .section-title{font-size:clamp(14px,3.8vw,19px);letter-spacing:1px;margin:0 0 24px}
+ .showreel .youtube{width:100%;height:auto;aspect-ratio:16/9;margin:0}
+}
+/* Compact Skill content while retaining shared navigation and footer sizing. */
+main.skills{max-width:1260px;padding:65px 6.5% 65px}
+.skills .page-title{font-size:clamp(28px,3.1vw,46px);margin-bottom:48px;font-weight:400}
+.skills .page-title:after{width:40px;margin-top:26px}
+.skills .skill-row{padding-bottom:42px;margin-bottom:42px}
+.skills .skill-row:last-child{padding-bottom:0;margin-bottom:0}
+.skills .skill-copy h2{font-size:clamp(23px,2.2vw,32px);font-weight:700}
+.skills .english{font-size:16px}
+.skills .english:after{margin:20px 0}
+.skills .skill-copy ul{font-size:clamp(14px,1.15vw,17px);line-height:1.85}
+.skills .skill-copy li{margin:6px 0}
+@media(max-width:600px){
+ main.skills{padding:36px 22px 44px}
+ .skills .page-title{font-size:27px;margin-bottom:32px}
+ .skills .skill-row{padding-bottom:28px;margin-bottom:28px;gap:20px}
+ .skills .skill-copy h2{font-size:24px}
+ .skills .skill-copy ul{font-size:14px}
+}
+
+/* Shared light-only navigation and footer. */
+.nav-spacer{width:110px;flex-shrink:0}
+.social a{border:0;border-radius:0}
+.social svg{width:29px;height:29px;display:block}
+.about-hero .copy p{font-size:18px;line-height:2}
+.about-hero .copy .quote{font-size:19px!important}
+.about-photo-enter{animation:page-enter 1s ease both}
+.about-title-enter{animation:page-enter .8s ease 1s both}
+.about-content-enter{animation:page-enter .8s ease 1.8s both}
+.project-info .project-description{animation:page-enter .8s ease .15s both}
+.project-info .project-link{animation:page-enter .8s ease .95s both}
+.resume .personal{font-size:16px}
+.resume .introduction,.resume .resume-main ul,.resume .job p{font-size:17px}
+.resume .skill-meter{font-size:15px}
+.resume .job time{font-size:.95em}
+@keyframes page-enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+ .nav-spacer{display:none}.nav{gap:8px}.links{gap:12px}
+ .about-hero .copy p{font-size:15px}
+ .about-hero .copy .quote{font-size:16px!important}
+}
+@media(max-width:380px){.nav .logo{width:80px}.links{gap:8px}}
+@media(prefers-reduced-motion:reduce){
+ .about-photo-enter,.about-title-enter,.about-content-enter,
+ .project-info .project-description,.project-info .project-link{animation:none}
+}

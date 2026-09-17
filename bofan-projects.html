@@ -1,0 +1,138 @@
+<!doctype html><html lang="zh-Hant"><head><link rel="icon" type="image/png" href="favicon.png"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BOFAN | Projects</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f1f1f0;color:#202020;font-family:Arial,"Microsoft JhengHei",sans-serif}a{color:inherit;text-decoration:none}
+.nav{height:95px;padding:0 4.2%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5;background:rgba(250,250,250,.96);border-bottom:1px solid #eee}
+.logo{width:142px;height:44px;display:block;background:url('assets/logo.png') center/contain no-repeat}.logo-icon,.logo-word{display:none}
+.links{display:flex;gap:clamp(35px,5vw,85px);align-items:center;height:100%}.links a,.links span{height:100%;font-size:13px;letter-spacing:1.2px;padding:43px 0 0;border-bottom:2px solid transparent}.links .active{border-color:#222}
+.skills{max-width:1500px;margin:auto;padding:85px 6.5% 80px}.page-title{margin:0 0 65px;font-size:clamp(30px,3.7vw,56px);font-weight:700;letter-spacing:1px}.page-title span{font-weight:400;margin:0 18px}.page-title:after{content:"";display:block;width:48px;height:3px;background:currentColor;margin-top:34px}
+.skill-row{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:5.5%;padding:0 0 58px;margin-bottom:58px;border-bottom:1px solid #d0d0ce;animation:skill-enter .85s cubic-bezier(.22,1,.36,1) var(--delay) both}.skill-row:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.skill-image{display:block;aspect-ratio:16/9;overflow:hidden;border-radius:14px;line-height:0}.skill-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}.skill-image:hover img{transform:scale(1.025)}.skill-image:focus-visible{outline:3px solid currentColor;outline-offset:5px}
+.skill-copy h2{font-size:clamp(26px,2.6vw,38px);margin:0 0 12px;font-weight:600}.english{font-size:18px;color:#858585;margin:0}.english:after{content:"";display:block;width:20px;height:1px;background:currentColor;margin:25px 0}
+.skill-copy ul{padding-left:22px;margin:0;font-size:clamp(15px,1.35vw,20px);line-height:1.9}.skill-copy li{padding-left:3px;margin:8px 0}
+.contact{background:#ececea;padding:50px 5% 52px;display:flex;justify-content:space-between}.contact h2{margin:0 0 30px;font-size:21px;letter-spacing:5px}.contact h2:after{content:"";display:block;width:40px;height:2px;background:currentColor;margin-top:14px}.contact p{font:11px/2.5 monospace;letter-spacing:2px}.follow{align-self:center;text-align:center}.social{display:flex;gap:28px;margin-top:26px}.social a{width:34px;height:34px;display:grid;place-items:center;border:1.5px solid;border-radius:50%}.copyright{text-align:center;padding:20px;font:9px monospace;letter-spacing:2px;color:#777;background:#fafafa}
+#top{position:fixed;right:25px;bottom:25px;width:47px;height:47px;border:0;border-radius:50%;background:#222;color:#fff;font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}#top.show{opacity:1;pointer-events:auto}
+@keyframes skill-enter{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+@media(max-width:900px){.skills{padding-top:55px}.skill-row{gap:30px}.skill-copy ul{font-size:15px}}
+@media(max-width:700px){.nav{height:67px;padding:0 18px}.logo{width:106px;height:34px}.links{gap:19px}.links a,.links span{padding-top:28px;font-size:9px}.links span{display:none}}
+@media(max-width:600px){.skills{padding:45px 22px 55px}.page-title{font-size:30px;margin-bottom:40px}.page-title span{margin:0 8px}.skill-row{grid-template-columns:1fr;gap:24px;padding-bottom:35px;margin-bottom:35px}.skill-copy h2{font-size:27px}.english{font-size:16px}.english:after{margin:18px 0}.contact{display:block;padding:40px 24px}.follow{text-align:left;margin-top:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.skill-row{animation:none}.skill-image img{transition:none}}
+</style><link rel="stylesheet" href="theme.css"><script src="theme.js"></script>
+<style>
+.projects{height:calc(100svh - 95px);display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.5svh,18px);padding:clamp(12px,2svh,28px) 0;overflow:hidden}
+.projects h1{font-size:clamp(24px,3.5svh,38px);font-weight:400;margin:0;text-align:center}
+.projects h1:after{content:"";display:block;width:48px;height:2px;background:#999;margin:12px auto 0}
+.project-stage{position:relative;width:100%;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;perspective:1100px}
+.project-main{display:block;position:relative;max-width:56vw;height:100%;aspect-ratio:16/9;max-height:44svh;border-radius:14px;flex-shrink:1}
+.project-main img{width:100%;height:100%;object-fit:contain;border-radius:14px;display:block}
+.project-main:after{content:"▶";display:grid;place-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:2px solid white;border-radius:50%;width:58px;height:58px;color:white;background:#0003;font-size:24px}
+.project-preview{position:absolute;width:24vw;height:85%;border:0;padding:0;background:none;opacity:.35;cursor:pointer}
+.project-preview img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.project-preview.left{left:-2%;transform:rotateY(22deg)}.project-preview.right{right:-2%;transform:rotateY(-22deg)}
+.project-preview:hover{opacity:.55}
+.project-nav{display:flex;align-items:center;justify-content:center;gap:22px;width:100%;height:30px;flex-shrink:0}
+.project-nav>button{border:1px solid #888;border-radius:50%;width:30px;height:30px;background:transparent;color:inherit;font-size:21px;cursor:pointer}
+.project-dots{display:flex;gap:8px}.project-dots button{width:20px;height:20px;padding:0;border:0;background:transparent;cursor:pointer}
+.project-dots button:after{content:"";display:block;height:3px;border-radius:3px;background:#ccc}.project-dots button[aria-current="true"]:after{background:#555}
+.project-info{text-align:center;width:min(900px,88%);flex-shrink:0}
+.project-info h2{font-size:clamp(19px,2.7svh,30px);line-height:1.4;margin:0 0 6px}
+.project-subtitle{font-size:clamp(14px,2svh,21px);color:#888;margin:0 0 10px}
+.project-link{display:inline-block;border:1px solid #777;padding:7px 20px;font-size:13px;border-radius:4px;transition:background .2s}
+.project-link:hover{background:#333;color:#fff}
+.project-description{font-size:clamp(13px,1.8svh,18px);line-height:1.8;letter-spacing:.5px;margin:12px auto 0;max-width:820px}
+
+
+@media(max-width:700px){.projects{height:calc(100svh - 67px);gap:10px;padding:12px 0}.projects h1{font-size:24px}.project-main{max-width:76vw}.project-preview{width:22vw}.project-preview.left{left:-13%}.project-preview.right{right:-13%}.project-info{width:90%}.project-info h2{font-size:18px}.project-description{font-size:13px;line-height:1.65;margin-top:10px}.project-main:after{width:42px;height:42px;font-size:18px}}
+@media(max-height:550px){.projects{gap:5px;padding:6px 0}.projects h1{font-size:20px}.projects h1:after{margin:5px auto}.project-info h2{font-size:16px}.project-subtitle{font-size:12px;margin-bottom:4px}.project-description{font-size:11px;line-height:1.4;margin-top:5px}.project-link{padding:3px 12px;font-size:11px}}
+</style><style>
+#enable-sound{position:absolute;z-index:3;bottom:14px;left:50%;transform:translateX(-50%);border:1px solid #fff8;border-radius:24px;padding:10px 20px;background:#222d;color:white;font-size:14px;cursor:pointer}
+#enable-sound[hidden]{display:none}
+.project-main video{display:block;width:100%;height:100%;object-fit:contain;border-radius:14px;
+-webkit-box-reflect:below 3px linear-gradient(to bottom,transparent 74%,rgba(255,255,255,.20));}
+</style></head><body><nav class="nav"><a class="logo" href="bofan-portfolio.html" aria-label="BOFAN 首頁"><span class="logo-icon"></span><span class="logo-word"></span></a><div class="links"><a href="bofan-portfolio.html">PORTFOLIO</a><a href="bofan-about.html">ABOUT ME</a><a href="bofan-skill.html">SKILL</a><a class="active" aria-current="page" href="bofan-projects.html">PROJECTS</a><a href="bofan-resume.html">RESUME</a></div><span class="nav-spacer" aria-hidden="true"></span></nav>
+<main class="projects" aria-label="專案輪播">
+<header class="project-heading" aria-live="polite"><h1 id="project-title"></h1><p class="project-subtitle" id="project-subtitle"></p></header>
+<div class="project-stage">
+<button class="project-preview left" aria-label="上一個專案"><img id="previous-image" alt=""></button>
+<a class="project-main" id="main-link" target="_blank" rel="noopener noreferrer"><video id="main-video" autoplay loop playsinline preload="auto"></video></a><button id="enable-sound" type="button" hidden>開啟聲音</button>
+<button class="project-preview right" aria-label="下一個專案"><img id="next-image" alt=""></button>
+</div>
+<div class="project-nav"><button id="previous" aria-label="上一個專案">‹</button><div class="project-dots" aria-label="選擇專案"></div><button id="next" aria-label="下一個專案">›</button></div>
+<section class="project-info" aria-live="polite"><p class="project-description" id="project-description"></p><a class="project-link" id="project-link" target="_blank" rel="noopener noreferrer">觀看完整動畫</a></section>
+</main><footer class="contact"><div><h2>CONTACT</h2><p>⌖　TAIPEI, TAIWAN<br>⌕　0977 430 792<br>✉　BRUCEHSIEH1028@GMAIL.COM</p></div><div class="follow"><p>FOLLOW ME</p><div class="social"><a href="https://www.facebook.com/xie.bo.fan.2025/?locale=zh_TW" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-9h3l.5-3.5h-3.5V7.2c0-1 .3-1.7 1.8-1.7H17V2.3c-.3 0-1.5-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8v2.6H6.5V13h3v9z"/></svg></a><a href="https://www.instagram.com/xiebofan_1028/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@BofanAnimation" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="5" width="22" height="14" rx="4" fill="currentColor"/><path d="m10 9 6 3-6 3z" fill="#ececea"/></svg></a></div></div></footer><div class="copyright">© 2024 BOFAN. ALL RIGHTS RESERVED.</div>
+<script>
+const projects=[{"video":"assets/女王頭_精華10秒.mp4","image":"assets/bullion.jpg","title":"聖巨金業有限公司 - 女王頭金條動畫","subtitle":"產品動畫","description":"以個人名義接案的金條產品動畫，產品是野柳女王頭紀念條塊，我在動畫中將女王頭分解並重組成金條，以這樣手法來傳達「自然之美與黃金的永恆光澤融為一體」","url":"https://drive.google.com/file/d/1JDq7Mun8x0iPk6siSR-6coMCvvI68LaI/view?usp=sharing"},{"video":"assets/英特力美語.mp4","image":"assets/coverem.jpg","title":"英特力美語 - 宣傳動畫","subtitle":"企業形象動畫","description":"以個人名義接案的美語補習班形象廣告，以科幻+可愛的元素設計十三隻水果機器人，並以其中四隻為主角製作動畫，後續也有幫公司設計角色卡、衣服、筆記本等各式周邊","url":"https://youtu.be/tP8osuzgcbI"},{"video":"assets/杜拜.mp4","image":"assets/bear.jpg","title":"杜拜 海灣資科展 - 光雕動畫","subtitle":"企業形象動畫","description":"杜拜的海灣資科展，動畫以展現台灣價值為主，我在此專案中負責團隊的主美術以及動畫製作","url":"https://youtu.be/B7jHdY-nIVI"},{"video":"assets/晶華.mp4","image":"assets/wedding.jpg","title":"晶華酒店 麗晶之夜 - 光雕動畫","subtitle":"展場動畫","description":"晶華酒店的婚禮展場動畫，這個專案全程以AI製作，以植物和四季為元素製作的自然風格系列動畫，我負責一部份動畫製作以及現場攝影和後續影片的剪輯","url":"https://youtu.be/VWlY8Nf_YY4?list=PLiOO64XgIuiJzqNwjsiXS2_B2MDFszswc"},{"video":"assets/中興.mp4","image":"assets/train.jpg","title":"宜蘭中興 光影互動展 - 光雕動畫","subtitle":"展場動畫","description":"與宜蘭縣政府合作的光影互動展，內容是以中興車站火車為主題的系列光雕動畫，我在專案中負責3D火車動畫以及耶誕主秀動畫，以及現場攝影和後續影片的剪輯","url":"https://youtu.be/93e3t2_4drc"},{"video":"assets/花蓮知卡宣.mp4","image":"assets/col.jpg","title":"花蓮知卡宣 三次常設展 - 光雕動畫","subtitle":"展場動畫","description":"與花蓮縣政府合作的知卡宣公園常設展，參與了三次展覽的動畫製作，負責團隊的主美術和動畫，以及後續影片的剪輯","url":"https://youtu.be/oKw6BDI72F4"},{"video":"assets/磁軌兔.mp4","image":"assets/cover.png","title":"磁軌兔 - 3D裸視動畫","subtitle":"個人形象品牌動畫","description":"以代表自身形象設計的兔子製作一部簡短的3D裸視動畫，畫面走高科技風格，並使用金屬和光條作點綴","url":"https://www.youtube.com/shorts/g0DsePke6m4?feature=share"}];
+let index=0,busy=false;
+const byId=id=>document.getElementById(id);
+const dots=projects.map((project,i)=>{const button=document.createElement('button');button.setAttribute('aria-label',project.title);button.onclick=()=>change(i);document.querySelector('.project-dots').append(button);return button});
+function render(){
+ const project=projects[index];
+ const video=byId('main-video');
+ video.pause();
+ video.setAttribute('aria-label',project.title);
+ video.poster=project.image;
+ video.muted=false;
+ video.src=project.video;
+ video.load();
+ video.onloadeddata=async()=>{
+   video.currentTime=0;
+   try { await video.play(); byId('enable-sound').hidden=true; }
+   catch {
+     byId('enable-sound').hidden=false;
+     video.muted=true;
+     video.play().catch(()=>{});
+   }
+ };
+ byId('previous-image').src=projects[(index+6)%7].image;byId('next-image').src=projects[(index+1)%7].image;
+ document.querySelectorAll('.project-reflection').forEach(image=>image.remove());
+ ['previous-image','next-image'].forEach(id=>{
+   const original=byId(id), reflection=original.cloneNode(false);
+   reflection.removeAttribute('id');reflection.alt='';reflection.setAttribute('aria-hidden','true');
+   reflection.className='project-reflection';original.parentElement.append(reflection);
+ });
+ byId('main-link').href=byId('project-link').href=project.url;
+ byId('main-link').setAttribute('aria-label','觀看完整動畫：'+project.title);
+ byId('project-title').textContent=project.title;byId('project-subtitle').textContent=project.subtitle;byId('project-description').textContent=project.description;
+ dots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===index)));
+}
+async function change(next){
+ if(busy||next===index)return;busy=true;
+ const direction=next>index?1:-1;
+ index=(next+projects.length)%projects.length;
+ render();
+ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ await Promise.all([document.querySelector('.project-stage')].map(el=>el.animate([{opacity:0,transform:'translateX('+direction*24+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:420,easing:'cubic-bezier(.22,1,.36,1)'}).finished));
+ }
+ busy=false;
+}
+byId('previous').onclick=document.querySelector('.project-preview.left').onclick=()=>change(index-1);
+byId('next').onclick=document.querySelector('.project-preview.right').onclick=()=>change(index+1);
+document.querySelector('.projects').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();change(index-1)}if(e.key==='ArrowRight'){e.preventDefault();change(index+1)}});
+byId('enable-sound').onclick=()=>{
+ const video=byId('main-video');
+ video.muted=false;
+ video.play().then(()=>{byId('enable-sound').hidden=true;}).catch(()=>{byId('enable-sound').hidden=false;});
+};
+render();
+</script><style>
+.projects{padding-top:4svh;padding-bottom:3svh;gap:clamp(12px,2svh,22px)}
+.project-heading{flex-shrink:0;text-align:center;width:92%;position:relative;z-index:1}
+.projects .project-heading h1{font-size:clamp(19px,2.8svh,32px);font-weight:700;line-height:1.4;margin:0 0 6px}
+.projects .project-heading h1:after{content:"";display:block;width:36px;height:2px;background:#999;margin:10px auto}
+.project-info .project-link{padding:11px 28px;font-size:16px;border-radius:24px;margin-top:24px;margin-bottom:0}
+.project-stage{flex:1;max-height:42svh}
+.project-main:after{display:none}
+.project-main,.project-preview{overflow:visible}
+.project-main img.project-reflection,.project-preview img.project-reflection{
+ position:absolute;left:0;top:calc(100% + 3px);width:100%;height:100%;
+ transform:scaleY(-1);pointer-events:none;opacity:.23;
+ mask-image:linear-gradient(to top,rgba(0,0,0,.85),transparent 26%);
+ -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.85),transparent 26%);
+}
+.project-nav,.project-info{position:relative;z-index:1}
+.project-nav{margin-top:20px;margin-bottom:10px}
+.project-info .project-description{margin:0 auto}
+@media(max-width:700px){.projects{padding-bottom:6svh}.project-info .project-link{padding:9px 24px;font-size:14px}}
+@media(max-height:550px){.projects{padding-bottom:4svh}.project-info .project-link{padding:5px 18px;font-size:12px;margin-top:8px;margin-bottom:0}.project-nav{margin-top:6px}.projects .project-heading h1{font-size:17px}}
+</style></body></html>
+
